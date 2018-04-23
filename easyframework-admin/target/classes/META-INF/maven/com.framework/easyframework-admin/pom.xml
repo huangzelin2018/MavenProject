@@ -16,13 +16,8 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>com.framework</groupId>
-			<artifactId>easyframework-core</artifactId>
+			<artifactId>easyframework-base</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>

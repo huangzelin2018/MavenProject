@@ -8,17 +8,10 @@
 		<artifactId>Easyframework</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>easyframework-admin</artifactId>
-	<name>easyframework-admin</name>
+	<artifactId>easyframework-mybatis</artifactId>
+	<name>easyframework-mybatis</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-	<dependencies>
-		<dependency>
-			<groupId>com.framework</groupId>
-			<artifactId>easyframework-base</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-	</dependencies>
 </project>
