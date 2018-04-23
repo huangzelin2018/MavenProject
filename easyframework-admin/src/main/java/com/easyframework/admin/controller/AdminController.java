@@ -6,10 +6,11 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.easyframework.base.BaseController;
 import com.easyframework.base.util.ArrayUtils;
 
 
-public class AdminController {
+public class AdminController extends BaseController{
 
 	private static final String BUSINESS_NAME = "/admin";
 	private static final char SP = '/';// File.separatorChar;
