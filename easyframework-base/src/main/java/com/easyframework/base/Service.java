@@ -4,6 +4,7 @@ import org.apache.ibatis.exceptions.TooManyResultsException;
 import tk.mybatis.mapper.entity.Condition;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Service 层 基础接口，其他Service 接口 请继承该接口
@@ -19,4 +20,5 @@ public interface Service<T> {
     List<T> findByIds(String ids);//通过多个ID查找//eg：ids -> “1,2,3,4”
     List<T> findByCondition(Condition condition);//根据条件查找
     List<T> findAll();//获取所有
+    Map<String, Object> getPageList(int pageIndex, int pageSize);//layui分页
 }

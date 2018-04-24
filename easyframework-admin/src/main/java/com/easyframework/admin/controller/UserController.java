@@ -1,17 +1,15 @@
 package com.easyframework.admin.controller;
 
-import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.easyframework.admin.service.UserService;
-import com.easyframework.model.User;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 
 @Controller
 @RequestMapping("/admin/user")
@@ -20,14 +18,17 @@ public class UserController extends AdminController {
 	@Resource
 	private UserService userService;
 
-	@RequestMapping("/list")
-	public String list(@RequestParam(value = "page", defaultValue = "1") Integer page,
-			@RequestParam(value = "size", defaultValue = "10") Integer size) {
-		PageHelper.startPage(page, size);
-		List<User> list = userService.findAll();
-		PageInfo<User> pageInfo = new PageInfo<User>(list);
-		request.setAttribute("pageInfo", pageInfo);
+	@RequestMapping("/")
+	public String toList() {
 		return view("list");
+	}
+	
+	@RequestMapping("/list")
+	@ResponseBody
+	public Map<String, Object> list(@RequestParam Map<String, Object> paramsMap) {
+		System.out.println(paramsMap);
+//		return userService.getPageList(pageIndex, pageSize);
+		return userService.getUserList(paramsMap);
 	}
 
 	@RequestMapping("/add")

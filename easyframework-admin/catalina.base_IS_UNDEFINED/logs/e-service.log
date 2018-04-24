@@ -1,0 +1,203 @@
+22:21:02.365 [restartedMain] ERROR o.springframework.boot.SpringApplication - Application startup failed
+java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - Could not find an appender named [console]. Did you define it below instead of above in the configuration file?
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - See http://logback.qos.ch/codes.html#appender_order for more details.
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:162)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:81)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:59)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:115)
+	at org.springframework.boot.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:303)
+	at org.springframework.boot.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:276)
+	at org.springframework.boot.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:239)
+	at org.springframework.boot.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:212)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:122)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:74)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:54)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:325)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:296)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at com.easyframework.EasyframeworkApplication.main(EasyframeworkApplication.java:10)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+22:21:24.573 [restartedMain] ERROR o.springframework.boot.SpringApplication - Application startup failed
+java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - Could not find an appender named [STDOUT]. Did you define it below instead of above in the configuration file?
+ERROR in ch.qos.logback.core.joran.action.AppenderRefAction - See http://logback.qos.ch/codes.html#appender_order for more details.
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:162)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:81)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:59)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:115)
+	at org.springframework.boot.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:303)
+	at org.springframework.boot.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:276)
+	at org.springframework.boot.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:239)
+	at org.springframework.boot.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:212)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:122)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:74)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:54)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:325)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:296)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at com.easyframework.EasyframeworkApplication.main(EasyframeworkApplication.java:10)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+22:21:58.515 [restartedMain] INFO  c.easyframework.EasyframeworkApplication - Starting EasyframeworkApplication on C3ZYT2JQLFAZELV with PID 7560 (F:\Easyframework\easyframework-admin\target\classes started by Administrator in F:\Easyframework\easyframework-admin)
+22:21:58.516 [restartedMain] INFO  c.easyframework.EasyframeworkApplication - No active profile set, falling back to default profiles: default
+22:21:58.688 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 5.3.6.Final
+22:21:58.810 [restartedMain] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@788157de: startup date [Tue Apr 24 22:21:58 CST 2018]; root of context hierarchy
+22:22:00.130 [restartedMain] DEBUG o.m.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [F:\Easyframework\easyframework-mybatis\target\classes\com\easyframework\mybatis\UserMapper.class]
+22:22:00.131 [restartedMain] DEBUG o.m.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'userMapper' and 'com.easyframework.mybatis.UserMapper' mapperInterface
+22:22:00.132 [restartedMain] WARN  o.s.c.a.ConfigurationClassPostProcessor - Cannot enhance @Configuration bean definition 'mybatisConfigurer' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'.
+22:22:01.010 [restartedMain] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 8080 (http)
+22:22:01.023 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+22:22:01.024 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.27
+22:22:01.159 [localhost-startStop-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+22:22:01.159 [localhost-startStop-1] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2349 ms
+22:22:01.388 [localhost-startStop-1] INFO  o.s.b.w.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+22:22:01.394 [localhost-startStop-1] INFO  o.s.b.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+22:22:01.395 [localhost-startStop-1] INFO  o.s.b.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+22:22:01.395 [localhost-startStop-1] INFO  o.s.b.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+22:22:01.395 [localhost-startStop-1] INFO  o.s.b.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+22:22:01.774 [restartedMain] DEBUG org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+22:22:01.810 [restartedMain] DEBUG org.mybatis.spring.SqlSessionFactoryBean - Property 'configuration' or 'configLocation' not specified, using default MyBatis Configuration
+22:22:01.856 [restartedMain] DEBUG org.apache.ibatis.io.VFS - Class not found: org.jboss.vfs.VFS
+22:22:01.856 [restartedMain] DEBUG org.apache.ibatis.io.JBoss6VFS - JBoss 6 VFS API is not available in this environment.
+22:22:01.857 [restartedMain] DEBUG org.apache.ibatis.io.VFS - Class not found: org.jboss.vfs.VirtualFile
+22:22:01.858 [restartedMain] DEBUG org.apache.ibatis.io.VFS - VFS implementation org.apache.ibatis.io.JBoss6VFS is not valid in this environment.
+22:22:01.858 [restartedMain] DEBUG org.apache.ibatis.io.VFS - Using VFS adapter org.apache.ibatis.io.DefaultVFS
+22:22:01.859 [restartedMain] DEBUG org.apache.ibatis.io.DefaultVFS - Find JAR URL: file:/F:/Easyframework/easyframework-model/target/classes/com/easyframework/model
+22:22:01.859 [restartedMain] DEBUG org.apache.ibatis.io.DefaultVFS - Not a JAR: file:/F:/Easyframework/easyframework-model/target/classes/com/easyframework/model
+22:22:01.902 [restartedMain] DEBUG org.apache.ibatis.io.DefaultVFS - Reader entry: User.class
+22:22:01.902 [restartedMain] DEBUG org.apache.ibatis.io.DefaultVFS - Listing file:/F:/Easyframework/easyframework-model/target/classes/com/easyframework/model
+22:22:01.903 [restartedMain] DEBUG org.apache.ibatis.io.DefaultVFS - Find JAR URL: file:/F:/Easyframework/easyframework-model/target/classes/com/easyframework/model/User.class
+22:22:01.903 [restartedMain] DEBUG org.apache.ibatis.io.DefaultVFS - Not a JAR: file:/F:/Easyframework/easyframework-model/target/classes/com/easyframework/model/User.class
+22:22:01.904 [restartedMain] DEBUG org.apache.ibatis.io.DefaultVFS - Reader entry: ����   4 A  com/easyframework/model/User   com/easyframework/base/BaseModel id Ljava/lang/Integer; RuntimeVisibleAnnotations Ljavax/persistence/Id; "Ljavax/persistence/GeneratedValue; strategy "Ljavax/persistence/GenerationType; IDENTITY username Ljava/lang/String; password nickName Ljavax/persistence/Column; name 	nick_name sex registerDate Ljava/util/Date; 
+22:22:01.904 [restartedMain] DEBUG org.apache.ibatis.io.ResolverUtil - Checking to see if class com.easyframework.model.User matches criteria [is assignable to Object]
+22:22:01.905 [restartedMain] DEBUG org.mybatis.spring.SqlSessionFactoryBean - Scanned package: 'com.easyframework.model' for aliases
+22:22:01.905 [restartedMain] DEBUG org.mybatis.spring.SqlSessionFactoryBean - Registered plugin: 'com.github.pagehelper.PageHelper@908ea52'
+22:22:01.981 [restartedMain] DEBUG org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [F:\Easyframework\easyframework-admin\target\classes\mapper\UserMapper.xml]'
+22:22:02.541 [restartedMain] INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@788157de: startup date [Tue Apr 24 22:21:58 CST 2018]; root of context hierarchy
+22:22:02.648 [restartedMain] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/admin/main/index]}" onto public java.lang.String com.easyframework.admin.controller.MainController.index()
+22:22:02.650 [restartedMain] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/admin/user/add]}" onto public java.lang.String com.easyframework.admin.controller.UserController.add()
+22:22:02.653 [restartedMain] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/admin/user/list]}" onto public java.util.Map<java.lang.String, java.lang.Object> com.easyframework.admin.controller.UserController.list(java.lang.Integer,java.lang.Integer)
+22:22:02.653 [restartedMain] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/admin/user/]}" onto public java.lang.String com.easyframework.admin.controller.UserController.toList()
+22:22:02.655 [restartedMain] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+22:22:02.656 [restartedMain] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+22:22:02.679 [restartedMain] INFO  o.s.w.s.handler.SimpleUrlHandlerMapping - Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+22:22:02.699 [restartedMain] INFO  o.s.w.s.handler.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+22:22:02.699 [restartedMain] INFO  o.s.w.s.handler.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+22:22:02.765 [restartedMain] INFO  o.s.w.s.handler.SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+22:22:04.083 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+22:22:04.157 [restartedMain] INFO  o.s.j.e.a.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+22:22:04.212 [restartedMain] INFO  o.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+22:22:04.226 [restartedMain] INFO  o.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+22:22:04.405 [restartedMain] INFO  o.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+22:22:04.432 [restartedMain] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat started on port(s): 8080 (http)
+22:22:04.438 [restartedMain] INFO  c.easyframework.EasyframeworkApplication - Started EasyframeworkApplication in 6.441 seconds (JVM running for 7.292)
+22:22:11.683 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring FrameworkServlet 'dispatcherServlet'
+22:22:11.683 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization started
+22:22:11.709 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization completed in 26 ms
+22:22:11.779 [http-nio-8080-exec-1] DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+22:22:11.790 [http-nio-8080-exec-1] DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@346c835c] was not registered for synchronization because synchronization is not active
+22:22:12.138 [http-nio-8080-exec-1] DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@a3bdee]]] will not be managed by Spring
+22:22:12.142 [http-nio-8080-exec-1] DEBUG c.e.mybatis.UserMapper.selectAll_COUNT - ==>  Preparing: SELECT count(0) FROM user 
+22:22:12.166 [http-nio-8080-exec-1] DEBUG c.e.mybatis.UserMapper.selectAll_COUNT - ==> Parameters: 
+22:22:12.179 [http-nio-8080-exec-1] DEBUG c.e.mybatis.UserMapper.selectAll_COUNT - <==      Total: 1
+22:22:12.182 [http-nio-8080-exec-1] DEBUG c.e.mybatis.UserMapper.selectAll - ==>  Preparing: SELECT id,username,password,nick_name,sex,register_date FROM user limit ?,? 
+22:22:12.183 [http-nio-8080-exec-1] DEBUG c.e.mybatis.UserMapper.selectAll - ==> Parameters: 0(Integer), 10(Integer)
+22:22:12.188 [http-nio-8080-exec-1] DEBUG c.e.mybatis.UserMapper.selectAll - <==      Total: 10
+22:22:12.189 [http-nio-8080-exec-1] DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@346c835c]
+22:22:47.880 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+22:22:47.881 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@788157de: startup date [Tue Apr 24 22:21:58 CST 2018]; root of context hierarchy
+22:22:47.886 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.j.e.a.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
+22:22:52.517 [restartedMain] INFO  c.easyframework.EasyframeworkApplication - Starting EasyframeworkApplication on C3ZYT2JQLFAZELV with PID 9232 (F:\Easyframework\easyframework-admin\target\classes started by Administrator in F:\Easyframework\easyframework-admin)
+22:22:52.518 [restartedMain] INFO  c.easyframework.EasyframeworkApplication - No active profile set, falling back to default profiles: default
+22:22:52.701 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 5.3.6.Final
+22:22:52.802 [restartedMain] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@67ffc392: startup date [Tue Apr 24 22:22:52 CST 2018]; root of context hierarchy
+22:22:54.177 [restartedMain] DEBUG o.m.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [F:\Easyframework\easyframework-mybatis\target\classes\com\easyframework\mybatis\UserMapper.class]
+22:22:54.177 [restartedMain] DEBUG o.m.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'userMapper' and 'com.easyframework.mybatis.UserMapper' mapperInterface
+22:22:54.178 [restartedMain] WARN  o.s.c.a.ConfigurationClassPostProcessor - Cannot enhance @Configuration bean definition 'mybatisConfigurer' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'.
+22:22:55.095 [restartedMain] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 8080 (http)
+22:22:55.107 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+22:22:55.109 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.27
+22:22:55.240 [localhost-startStop-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+22:22:55.241 [localhost-startStop-1] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2440 ms
+22:22:55.461 [localhost-startStop-1] INFO  o.s.b.w.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+22:22:55.467 [localhost-startStop-1] INFO  o.s.b.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+22:22:55.467 [localhost-startStop-1] INFO  o.s.b.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+22:22:55.468 [localhost-startStop-1] INFO  o.s.b.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+22:22:55.468 [localhost-startStop-1] INFO  o.s.b.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+22:22:55.810 [restartedMain] DEBUG org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+22:22:55.846 [restartedMain] DEBUG org.mybatis.spring.SqlSessionFactoryBean - Property 'configuration' or 'configLocation' not specified, using default MyBatis Configuration
+22:22:55.890 [restartedMain] DEBUG org.apache.ibatis.io.VFS - Class not found: org.jboss.vfs.VFS
+22:22:55.890 [restartedMain] DEBUG org.apache.ibatis.io.JBoss6VFS - JBoss 6 VFS API is not available in this environment.
+22:22:55.891 [restartedMain] DEBUG org.apache.ibatis.io.VFS - Class not found: org.jboss.vfs.VirtualFile
+22:22:55.892 [restartedMain] DEBUG org.apache.ibatis.io.VFS - VFS implementation org.apache.ibatis.io.JBoss6VFS is not valid in this environment.
+22:22:55.892 [restartedMain] DEBUG org.apache.ibatis.io.VFS - Using VFS adapter org.apache.ibatis.io.DefaultVFS
+22:22:55.893 [restartedMain] DEBUG org.apache.ibatis.io.DefaultVFS - Find JAR URL: file:/F:/Easyframework/easyframework-model/target/classes/com/easyframework/model
+22:22:55.893 [restartedMain] DEBUG org.apache.ibatis.io.DefaultVFS - Not a JAR: file:/F:/Easyframework/easyframework-model/target/classes/com/easyframework/model
+22:22:55.925 [restartedMain] DEBUG org.apache.ibatis.io.DefaultVFS - Reader entry: User.class
+22:22:55.927 [restartedMain] DEBUG org.apache.ibatis.io.DefaultVFS - Listing file:/F:/Easyframework/easyframework-model/target/classes/com/easyframework/model
+22:22:55.927 [restartedMain] DEBUG org.apache.ibatis.io.DefaultVFS - Find JAR URL: file:/F:/Easyframework/easyframework-model/target/classes/com/easyframework/model/User.class
+22:22:55.928 [restartedMain] DEBUG org.apache.ibatis.io.DefaultVFS - Not a JAR: file:/F:/Easyframework/easyframework-model/target/classes/com/easyframework/model/User.class
+22:22:55.929 [restartedMain] DEBUG org.apache.ibatis.io.DefaultVFS - Reader entry: ����   4 A  com/easyframework/model/User   com/easyframework/base/BaseModel id Ljava/lang/Integer; RuntimeVisibleAnnotations Ljavax/persistence/Id; "Ljavax/persistence/GeneratedValue; strategy "Ljavax/persistence/GenerationType; IDENTITY username Ljava/lang/String; password nickName Ljavax/persistence/Column; name 	nick_name sex registerDate Ljava/util/Date; 
+22:22:55.930 [restartedMain] DEBUG org.apache.ibatis.io.ResolverUtil - Checking to see if class com.easyframework.model.User matches criteria [is assignable to Object]
+22:22:55.931 [restartedMain] DEBUG org.mybatis.spring.SqlSessionFactoryBean - Scanned package: 'com.easyframework.model' for aliases
+22:22:55.931 [restartedMain] DEBUG org.mybatis.spring.SqlSessionFactoryBean - Registered plugin: 'com.github.pagehelper.PageHelper@3753cd95'
+22:22:56.006 [restartedMain] DEBUG org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [F:\Easyframework\easyframework-admin\target\classes\mapper\UserMapper.xml]'
+22:22:56.569 [restartedMain] INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@67ffc392: startup date [Tue Apr 24 22:22:52 CST 2018]; root of context hierarchy
+22:22:56.676 [restartedMain] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/admin/main/index]}" onto public java.lang.String com.easyframework.admin.controller.MainController.index()
+22:22:56.678 [restartedMain] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/admin/user/add]}" onto public java.lang.String com.easyframework.admin.controller.UserController.add()
+22:22:56.681 [restartedMain] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/admin/user/list]}" onto public java.util.Map<java.lang.String, java.lang.Object> com.easyframework.admin.controller.UserController.list(java.lang.Integer,java.lang.Integer)
+22:22:56.681 [restartedMain] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/admin/user/]}" onto public java.lang.String com.easyframework.admin.controller.UserController.toList()
+22:22:56.684 [restartedMain] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+22:22:56.684 [restartedMain] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+22:22:56.707 [restartedMain] INFO  o.s.w.s.handler.SimpleUrlHandlerMapping - Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+22:22:56.727 [restartedMain] INFO  o.s.w.s.handler.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+22:22:56.727 [restartedMain] INFO  o.s.w.s.handler.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+22:22:56.794 [restartedMain] INFO  o.s.w.s.handler.SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+22:22:58.040 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+22:22:58.116 [restartedMain] INFO  o.s.j.e.a.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+22:22:58.139 [restartedMain] INFO  o.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+22:22:58.155 [restartedMain] INFO  o.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+22:22:58.330 [restartedMain] INFO  o.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+22:22:58.353 [restartedMain] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat started on port(s): 8080 (http)
+22:22:58.359 [restartedMain] INFO  c.easyframework.EasyframeworkApplication - Started EasyframeworkApplication in 6.37 seconds (JVM running for 7.255)
+22:23:03.999 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring FrameworkServlet 'dispatcherServlet'
+22:23:03.999 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization started
+22:23:04.026 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization completed in 26 ms
+22:23:04.073 [http-nio-8080-exec-1] DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+22:23:04.082 [http-nio-8080-exec-1] DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@735072a1] was not registered for synchronization because synchronization is not active
+22:23:04.387 [http-nio-8080-exec-1] DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@34ef41d1]]] will not be managed by Spring
+22:23:04.391 [http-nio-8080-exec-1] DEBUG c.e.mybatis.UserMapper.selectAll_COUNT - ==>  Preparing: SELECT count(0) FROM user 
+22:23:04.415 [http-nio-8080-exec-1] DEBUG c.e.mybatis.UserMapper.selectAll_COUNT - ==> Parameters: 
+22:23:04.427 [http-nio-8080-exec-1] DEBUG c.e.mybatis.UserMapper.selectAll_COUNT - <==      Total: 1
+22:23:04.431 [http-nio-8080-exec-1] DEBUG c.e.mybatis.UserMapper.selectAll - ==>  Preparing: SELECT id,username,password,nick_name,sex,register_date FROM user limit ?,? 
+22:23:04.432 [http-nio-8080-exec-1] DEBUG c.e.mybatis.UserMapper.selectAll - ==> Parameters: 0(Integer), 10(Integer)
+22:23:04.437 [http-nio-8080-exec-1] DEBUG c.e.mybatis.UserMapper.selectAll - <==      Total: 10
+22:23:04.437 [http-nio-8080-exec-1] DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@735072a1]
+22:24:09.605 [http-nio-8080-exec-4] DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+22:24:09.605 [http-nio-8080-exec-4] DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@b6d1e01] was not registered for synchronization because synchronization is not active
+22:24:09.609 [http-nio-8080-exec-4] DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@34ef41d1]]] will not be managed by Spring
+22:24:09.609 [http-nio-8080-exec-4] DEBUG c.e.mybatis.UserMapper.selectAll_COUNT - ==>  Preparing: SELECT count(0) FROM user 
+22:24:09.610 [http-nio-8080-exec-4] DEBUG c.e.mybatis.UserMapper.selectAll_COUNT - ==> Parameters: 
+22:24:09.612 [http-nio-8080-exec-4] DEBUG c.e.mybatis.UserMapper.selectAll_COUNT - <==      Total: 1
+22:24:09.613 [http-nio-8080-exec-4] DEBUG c.e.mybatis.UserMapper.selectAll - ==>  Preparing: SELECT id,username,password,nick_name,sex,register_date FROM user limit ?,? 
+22:24:09.614 [http-nio-8080-exec-4] DEBUG c.e.mybatis.UserMapper.selectAll - ==> Parameters: 0(Integer), 10(Integer)
+22:24:09.620 [http-nio-8080-exec-4] DEBUG c.e.mybatis.UserMapper.selectAll - <==      Total: 10
+22:24:09.621 [http-nio-8080-exec-4] DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@b6d1e01]
+22:24:43.740 [Thread-6] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@67ffc392: startup date [Tue Apr 24 22:22:52 CST 2018]; root of context hierarchy
+22:24:43.744 [Thread-6] INFO  o.s.j.e.a.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown

@@ -4,22 +4,25 @@
 <meta charset="utf-8">
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<link rel="stylesheet" type="text/css" href="/admin/component/h-ui/css/H-ui.min.css" />
-<link rel="stylesheet" type="text/css" href="/admin/component/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" href="/common/public.css">
+<link rel="stylesheet" href="/admin/layui/css/layui.css">
+<style>
+.container {
+	padding: 10px 15px;
+}
+</style>
 </head>
 <body>
-<section class="Hui-article-box">
-	<div class="Hui-article">
-		<article class="cl p-20">
-			<div layout:fragment="content"></div>
-		</article>
-	</div>
-</section>
-<!--_footer 作为公共模版分离出去--> 
-<script type="text/javascript" src="/admin/component/jquery/1.9.1/jquery.min.js"></script> 
-<script type="text/javascript" src="/admin/component/layer-v3.0.3/layer/layer.js"></script> 
-<script type="text/javascript" src="/admin/component/h-ui/js/H-ui.js"></script> 
-<!--/_footer /作为公共模版分离出去--> 
-
+	<section class="container">
+		<!-- 搜索框 -->
+		<blockquote class="layui-elem-quote">
+			<div layout:fragment="searchBox"></div>
+		</blockquote>
+		<!-- 正文 -->
+		<div layout:fragment="content"></div>
+	</section>
+	<!-- js引入 -->
+	<script src="/admin/layui/layui.js"></script>
+	<div layout:fragment="footer"></div>
 </body>
 </html>

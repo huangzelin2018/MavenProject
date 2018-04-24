@@ -1,75 +1,99 @@
 package com.easyframework.base;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.exceptions.TooManyResultsException;
 import org.springframework.beans.factory.annotation.Autowired;
-import tk.mybatis.mapper.entity.Condition;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.ParameterizedType;
-import java.util.List;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+
+import tk.mybatis.mapper.entity.Condition;
 
 /**
  * 基于通用MyBatis Mapper插件的Service接口的实现
  */
 public abstract class BaseService<T> implements Service<T> {
 
-    @Autowired
-    protected Mapper<T> mapper;
+	@Autowired
+	protected Mapper<T> mapper;
 
-    private Class<T> modelClass;    // 当前泛型真实类型的Class
+	private Class<T> modelClass; // 当前泛型真实类型的Class
 
-    public BaseService() {
-        ParameterizedType pt = (ParameterizedType) this.getClass().getGenericSuperclass();
-        modelClass = (Class<T>) pt.getActualTypeArguments()[0];
-    }
+	public BaseService() {
+		ParameterizedType pt = (ParameterizedType) this.getClass().getGenericSuperclass();
+		modelClass = (Class<T>) pt.getActualTypeArguments()[0];
+	}
 
-    public void save(T model) {
-        mapper.insertSelective(model);
-    }
+	public void save(T model) {
+		mapper.insertSelective(model);
+	}
 
-    public void save(List<T> models) {
-        mapper.insertList(models);
-    }
+	public void save(List<T> models) {
+		mapper.insertList(models);
+	}
 
-    public void deleteById(Integer id) {
-        mapper.deleteByPrimaryKey(id);
-    }
+	public void deleteById(Integer id) {
+		mapper.deleteByPrimaryKey(id);
+	}
 
-    public void deleteByIds(String ids) {
-        mapper.deleteByIds(ids);
-    }
+	public void deleteByIds(String ids) {
+		mapper.deleteByIds(ids);
+	}
 
-    public void update(T model) {
-        mapper.updateByPrimaryKeySelective(model);
-    }
+	public void update(T model) {
+		mapper.updateByPrimaryKeySelective(model);
+	}
 
-    public T findById(Integer id) {
-        return mapper.selectByPrimaryKey(id);
-    }
+	public T findById(Integer id) {
+		return mapper.selectByPrimaryKey(id);
+	}
 
-    @Override
-    public T findBy(String fieldName, Object value) throws TooManyResultsException {
-        try {
-            T model = modelClass.newInstance();
-            Field field = modelClass.getDeclaredField(fieldName);
-            field.setAccessible(true);
-            field.set(model, value);
-            return mapper.selectOne(model);
-        } catch (ReflectiveOperationException e) {
-            throw new ServiceException(e.getMessage(), e);
-        }
-    }
+	@Override
+	public T findBy(String fieldName, Object value) throws TooManyResultsException {
+		try {
+			T model = modelClass.newInstance();
+			Field field = modelClass.getDeclaredField(fieldName);
+			field.setAccessible(true);
+			field.set(model, value);
+			return mapper.selectOne(model);
+		} catch (ReflectiveOperationException e) {
+			throw new ServiceException(e.getMessage(), e);
+		}
+	}
 
-    public List<T> findByIds(String ids) {
-        return mapper.selectByIds(ids);
-    }
+	public List<T> findByIds(String ids) {
+		return mapper.selectByIds(ids);
+	}
 
-    public List<T> findByCondition(Condition condition) {
-        return mapper.selectByCondition(condition);
-    }
+	public List<T> findByCondition(Condition condition) {
+		return mapper.selectByCondition(condition);
+	}
 
-    public List<T> findAll() {
-        return mapper.selectAll();
-    }
+	public List<T> findAll() {
+		return mapper.selectAll();
+	}
+
+	/**
+	 * layui分页封装
+	 * @param pageIndex
+	 * @param pageSize
+	 * @return
+	 */
+	public Map<String, Object> getPageList(int pageIndex, int pageSize) {
+		PageHelper.startPage(pageIndex, pageSize);
+		List<T> list = mapper.selectAll();
+		PageInfo<T> pageInfo = new PageInfo<T>(list);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("code", 0);
+		map.put("msg", "");
+		map.put("count", pageInfo.getTotal());
+		map.put("data", list);
+		return map;
+	}
+	
 }
