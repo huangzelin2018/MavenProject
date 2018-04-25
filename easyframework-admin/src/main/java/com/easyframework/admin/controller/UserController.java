@@ -27,8 +27,7 @@ public class UserController extends AdminController {
 	@ResponseBody
 	public Map<String, Object> list(@RequestParam Map<String, Object> paramsMap) {
 		System.out.println(paramsMap);
-//		return userService.getPageList(pageIndex, pageSize);
-		return userService.getUserList(paramsMap);
+		return userService.getListByMap(paramsMap);
 	}
 
 	@RequestMapping("/add")

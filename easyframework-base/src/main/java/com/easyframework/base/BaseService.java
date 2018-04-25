@@ -9,9 +9,6 @@ import java.util.Map;
 import org.apache.ibatis.exceptions.TooManyResultsException;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-
 import tk.mybatis.mapper.entity.Condition;
 
 /**
@@ -78,22 +75,18 @@ public abstract class BaseService<T> implements Service<T> {
 		return mapper.selectAll();
 	}
 
-	/**
-	 * layui分页封装
-	 * @param pageIndex
-	 * @param pageSize
-	 * @return
-	 */
-	public Map<String, Object> getPageList(int pageIndex, int pageSize) {
-		PageHelper.startPage(pageIndex, pageSize);
-		List<T> list = mapper.selectAll();
-		PageInfo<T> pageInfo = new PageInfo<T>(list);
+	public Map<String, Object> getListByMap(Map<String, Object> paramsMap) {
+
+		int pageSize = Integer.valueOf(paramsMap.get("limit").toString());
+		int startNum = (Integer.valueOf(paramsMap.get("page").toString()) - 1) * pageSize;
+		paramsMap.put("startNum", startNum);
+		paramsMap.put("pageSize", pageSize);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("code", 0);
 		map.put("msg", "");
-		map.put("count", pageInfo.getTotal());
-		map.put("data", list);
+		map.put("count", mapper.findCountByMap(paramsMap));
+		map.put("data", mapper.findListByMap(paramsMap));
 		return map;
 	}
-	
+
 }
