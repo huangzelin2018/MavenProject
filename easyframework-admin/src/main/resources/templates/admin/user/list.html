@@ -2,22 +2,56 @@
 	xmlns:th="http://www.thymeleaf.org">
 <meta charset="utf-8">
 <div layout:fragment="searchBox">
-	ID：
-	<div class="layui-inline">
-		<input class="layui-input" name="id" id="userId" autocomplete="off">
-	</div>
-	用户名：
-	<div class="layui-inline">
-		<input class="layui-input" name="usernamne" id="userName" autocomplete="off">
-	</div>
-	<button class="layui-btn" id="btnSearch" data-type="reload">搜索</button>
+	<!-- 搜索框 -->
+	<blockquote class="layui-elem-quote">
+		<div class="layui-form toolbar">
+			搜索：
+			<div class="layui-inline">
+				<select id="searchKey">
+					<option value="">-请选择-</option>
+					<option value="user_id">ID</option>
+					<option value="user_account">账号</option>
+					<option value="user_nickname">用户名</option>
+					<option value="mobile_phone">手机号</option>
+				</select>
+
+				<div class="layui-unselect layui-form-select">
+					<div class="layui-select-title">
+						<input type="text" placeholder="-请选择-" value="" readonly=""
+							class="layui-input layui-unselect"><i class="layui-edge"></i>
+					</div>
+					<dl class="layui-anim layui-anim-upbit">
+						<dd lay-value="" class="layui-select-tips">-请选择-</dd>
+						<dd lay-value="user_id" class="layui-this">ID</dd>
+						<dd lay-value="user_account" class="">账号</dd>
+						<dd lay-value="user_nickname" class="">用户名</dd>
+						<dd lay-value="mobile_phone" class="">手机号</dd>
+					</dl>
+				</div>
+			</div>
+			<div class="layui-inline">
+				<input id="searchValue" class="layui-input search-input" type="text"
+					placeholder="输入搜索内容">
+			</div>
+			&nbsp;
+			<div class="layui-inline">
+				<button id="btnSearch" data-type="reload"
+					class="layui-btn search-btn">
+					<i class="layui-icon"></i>搜索
+				</button>
+				<button id="addBtn" _height="450" _width="800" _title="添加用户" _href="/admin/user/add"
+					onclick="util.boxshow(this);" class="layui-btn search-btn">
+					<i class="layui-icon"></i>添加
+				</button>
+			</div>
+		</div>
+	</blockquote>
 </div>
 <div layout:fragment="content">
 	<script type="text/html" id="switchTpl">
   		<input type="checkbox" name="sex" value="{{d.sex}}" lay-skin="switch" lay-text="女|男" lay-filter="sexDemo" {{ d.sex == 2 ? 'checked' : '' }}>
 	</script>
 	<script type="text/html" id="toolbar">
-  		<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
   		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
   		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 	</script>

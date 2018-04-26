@@ -1,0 +1,28 @@
+<html layout:decorator="/admin/public/layout"
+	xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<div layout:fragment="searchBox">
+	ID：
+	<div class="layui-inline">
+		<input class="layui-input" name="id" id="userId" autocomplete="off">
+	</div>
+	用户名：
+	<div class="layui-inline">
+		<input class="layui-input" name="usernamne" id="userName" autocomplete="off">
+	</div>
+	<button class="layui-btn" id="btnSearch" data-type="reload">搜索</button>
+</div>
+<div layout:fragment="content">
+	<script type="text/html" id="switchTpl">
+  		<input type="checkbox" name="sex" value="{{d.sex}}" lay-skin="switch" lay-text="女|男" lay-filter="sexDemo" {{ d.sex == 2 ? 'checked' : '' }}>
+	</script>
+	<script type="text/html" id="toolbar">
+  		<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+  		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+	</script>
+	<table class="layui-hide radius" id="listBox" lay-filter="listBox"></table>
+</div>
+<div layout:fragment="footer">
+	<script src="/admin/module/user/list.js"></script>
+</div>

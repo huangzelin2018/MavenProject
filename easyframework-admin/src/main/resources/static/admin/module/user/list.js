@@ -52,9 +52,7 @@ layui.use('table', function() {
 	// 监听工具条
 	table.on('tool(listBox)', function(obj) {
 		var data = obj.data;
-		if (obj.event === 'detail') {
-			top.layer.msg('ID：' + data.id + ' 的查看操作');
-		} else if (obj.event === 'del') {
+		if (obj.event === 'del') {
 			top.layer.confirm('真的删除行么', function(index) {
 				obj.del();
 				top.layer.close(index);

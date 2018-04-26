@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.easyframework.admin.service.UserService;
+import com.easyframework.base.ResultObj;
+import com.easyframework.model.User;
 
 @Controller
 @RequestMapping("/admin/user")
@@ -22,11 +24,10 @@ public class UserController extends AdminController {
 	public String toList() {
 		return view("list");
 	}
-	
+
 	@RequestMapping("/list")
 	@ResponseBody
 	public Map<String, Object> list(@RequestParam Map<String, Object> paramsMap) {
-		System.out.println(paramsMap);
 		return userService.getListByMap(paramsMap);
 	}
 
@@ -35,28 +36,44 @@ public class UserController extends AdminController {
 		return view("add");
 	}
 
-	// @RequestMapping("/save")
-	// public Result save(User user) {
-	// userService.save(user);
-	// return ResultGenerator.genSuccessResult();
-	// }
-	//
-	// @RequestMapping("/edit")
-	// public String edit(Integer id, HttpServletRequest request) {
-	// User user = userService.findById(id);
-	// request.setAttribute("user", user);
-	// return view("edit");
-	// }
-	//
-	// @RequestMapping("/update")
-	// public Result update(User user) {
-	// userService.update(user);
-	// return ResultGenerator.genSuccessResult();
-	// }
-	//
-	// @RequestMapping("/delete")
-	// public Result delete(Integer id) {
-	// userService.deleteById(id);
-	// return ResultGenerator.genSuccessResult();
-	// }
+	@RequestMapping("/save")
+	@ResponseBody
+	public ResultObj save(User user) {
+		try {
+			userService.save(user);
+			return resultObj.ajaxOk();
+		} catch (Exception e) {
+			return resultObj.ajaxError();
+		}
+
+	}
+
+	@RequestMapping("/edit")
+	public String edit(Integer id) {
+		User user = userService.findById(id);
+		request.setAttribute("user", user);
+		return view("edit");
+	}
+
+	@RequestMapping("/update")
+	@ResponseBody
+	public ResultObj update(User user) {
+		try {
+			userService.update(user);
+			return resultObj.ajaxOk();
+		} catch (Exception e) {
+			return resultObj.ajaxError();
+		}
+	}
+
+	@RequestMapping("/delete")
+	@ResponseBody
+	public ResultObj delete(Integer id) {
+		try {
+			userService.deleteById(id);
+			return resultObj.ajaxOk();
+		} catch (Exception e) {
+			return resultObj.ajaxError();
+		}
+	}
 }

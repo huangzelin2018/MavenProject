@@ -6,9 +6,9 @@ import java.util.List;
 /**
  * 封装一个统一对象用于返回前台
  */
-public class ResultObj<T> {
+public class ResultObj {
 
-	private List<T> collection = new ArrayList<T>();
+	private List<Object> collection = new ArrayList<Object>();
 
 	private String msg;
 
@@ -33,12 +33,24 @@ public class ResultObj<T> {
 	public ResultObj() {
 	}
 
-	public List<T> getCollection() {
+	public List<Object> getCollection() {
 		return collection;
 	}
 
-	public void setCollection(List<T> collection) {
+	public void setCollection(List<Object> collection) {
 		this.collection = collection;
+	}
+
+	public ResultObj ajaxOk() {
+		this.setSuccess(true);
+		this.setMsg("ok");
+		return this;
+	}
+
+	public ResultObj ajaxError() {
+		this.setSuccess(false);
+		this.setMsg("error");
+		return this;
 	}
 
 }

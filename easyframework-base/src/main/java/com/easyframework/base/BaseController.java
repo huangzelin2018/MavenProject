@@ -14,7 +14,7 @@ public abstract class BaseController{
 
 	public static Logger logger = Logger.getLogger(BaseController.class);
 
-	protected ResultObj<BaseModel> resultObj = new ResultObj<BaseModel>();// 封装一个统一对象用于返回前台
+	protected ResultObj resultObj = new ResultObj();// 封装一个统一对象用于返回前台
 
 	protected HttpServletRequest request;  
     protected HttpServletResponse response;  
