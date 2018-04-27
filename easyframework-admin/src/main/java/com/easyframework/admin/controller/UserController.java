@@ -21,6 +21,7 @@ public class UserController extends AdminController {
 
 	@Resource
 	private UserService userService;
+	
 
 	@RequestMapping("/")
 	public String toList() {
@@ -30,9 +31,6 @@ public class UserController extends AdminController {
 	@RequestMapping("/list")
 	@ResponseBody
 	public Map<String, Object> list(@RequestParam Map<String, Object> paramsMap) {
-		
-		User user = userService.findById(1);
-		System.out.println(user);
 		return userService.getListByMap(paramsMap);
 	}
 

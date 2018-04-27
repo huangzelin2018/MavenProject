@@ -2,6 +2,7 @@ package com.easyframework.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,10 +20,12 @@ public class User extends BaseModel{
 
     private String password;
 
+    @Column(name = "nickName")
     private String nickName;
 
     private Integer sex;
 
+    @Column(name = "registerDate")
     private Date registerDate;
 
 	public Integer getId() {

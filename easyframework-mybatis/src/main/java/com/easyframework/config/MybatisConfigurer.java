@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.SqlSessionUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -32,6 +33,7 @@ public class MybatisConfigurer {
 		SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
 		factory.setDataSource(dataSource);
 		factory.setTypeAliasesPackage(MODEL_PACKAGE);
+		
 
 		// 配置分页插件，详情请查阅官方文档
 		PageHelper pageHelper = new PageHelper();
@@ -47,6 +49,7 @@ public class MybatisConfigurer {
 		// 添加XML目录
 		ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 		factory.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));
+	
 		return factory.getObject();
 	}
 
