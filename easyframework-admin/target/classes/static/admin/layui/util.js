@@ -1,11 +1,22 @@
 var util = {};
 
-layui.use('layer', function() {
+layui.use([ 'form','layer'], function() {
 	
 	 var layer = layui.layer;
+	 var form = layui.form;
 	 var $ = layui.$;
 	 
-	 
+	 // 监听提交
+	 form.on('submit(submitForm)', function(data) {
+		var options = {
+			url : $(data.form).attr("action"),
+			data : data.field
+		};
+		alert(JSON.stringify(options));
+		util.addModel(options);
+		return false;
+	 });
+	
 	/**
 	 * 工具类
 	 * 
@@ -50,73 +61,6 @@ layui.use('layer', function() {
 	    });
 	};
 
-	util.checkForm = function () {
-	    var index;
-	    // 表单验证
-	    $("#validForm").Validform({
-	        ajaxPost: true,
-	        callback: function (data) {
-	            layer.close(index);
-	            layer.alert(data.msg, function (alertIndex) {
-	                layer.close(alertIndex);
-	                if (data.data.opflag == null || data.data.opflag == 0) {
-	                    layer.closeAll();
-	                    if (data.code == 1) {
-	                        // 返回当前控制器index页面
-	                        // window.location.href = think.indexUrl;
-	                        window.history.back(-2);
-	                    }
-	                } else {
-	                    window.history.back();
-	                }
-	            });
-	        },
-	        beforeSubmit: function (curform) {
-	            // 在验证成功后，表单提交前执行的函数，curform参数是当前表单对象。
-	            // 这里明确return false的话表单将不会提交;
-	            index = layer.load();
-	        },
-	        tiptype: function (msg, o, cssctl) {
-	            // msg：提示信息;
-	            // o:{obj:*,type:*,curform:*},
-				// obj指向的是当前验证的表单元素（或表单对象），type指示提示的状态，值为1、2、3、4，
-				// 1：正在检测/提交数据，2：通过验证，3：验证失败，4：提示ignore状态, curform为当前form对象;
-	            // cssctl:内置的提示信息样式控制函数，该函数需传入两个参数：显示提示信息的对象 和
-				// 当前提示的状态（既形参o中的type）;
-	            if (!o.obj.is("form")) { // 验证表单元素时o.obj为该表单元素，全部验证通过提交表单时o.obj为该表单对象;
-	                var objtip = o.obj.parents('.formControls').next('div');
-	                var objspan = objtip.find('span');
-	                if (objspan.length == 0) {
-	                    objtip.append('<span></span>');
-	                }
-	                objtip = objtip.find('span');
-	                cssctl(objtip, o.type);
-	                objtip.text(msg);
-	            }
-	        },
-	        datatype: {
-	            isExist: function (gets, obj, curform, regxp) {
-	                if (gets == '') {
-	                    return false;
-	                }
-	                var result = '数据已经存在!';
-	                $.ajax({
-	                    url: $(obj).attr('valid_url'),
-	                    dataType: 'json',
-	                    type: "post",
-	                    async: false,
-	                    data: {
-	                        account: gets
-	                    },
-	                    success: function (r) {
-	                        result = r.code == 1 ? true : r.msg;
-	                    }
-	                });
-	                return result;
-	            }
-	        }
-	    });
-	};
 	/**
 	 * ajax操作
 	 * 
@@ -127,13 +71,13 @@ layui.use('layer', function() {
 	 */
 	util.ajax = function (options, _callback) {
 	    if (options.url == null || options.url == '') {
-	        layer.msg('是否忘记配置url数据源?', {
+	        top.layer.msg('是否忘记配置url数据源?', {
 	            icon: 2,
 	            time: 1500 // 2秒关闭（如果不配置，默认是3秒）
 	        });
 	        return false;
 	    }
-	    var index = layer.load();
+	    var index = top.layer.load();
 	    var _options = {
 	        dataType: 'json',
 	        type: "post",
@@ -142,30 +86,44 @@ layui.use('layer', function() {
 	        data: {},
 	        success: function (data) {
 	            if (data.code == 0) {
-	                layer.alert(data.msg);
+	                top.layer.alert(data.msg);
 	                return false;
 	            }
 	            _callback(data);
 	        },
 	        error: function (XMLHttpRequest, textStatus, errorThrown) {
-	            layer.msg('可能网络异常,操作失败!', {
+	            top.layer.msg('可能网络异常,操作失败!', {
 	                icon: 2,
 	                time: 1500 // 2秒关闭（如果不配置，默认是3秒）
 	            });
 	        },
 	        complete: function () {
-	            layer.close(index);
+	            top.layer.close(index);
 	        }
 	    };
 	    $.ajax($.extend(_options, options));
 	};
+	
+	util.addModel = function(options){
+		util.ajax(options, function(response) {
+			top.layer.alert(response.msg, {
+				title : '温馨提示'
+			}, function(index) {
+				top.layer.close(index);
+				var frameIndex = top.layer.getFrameIndex(window.name);
+				top.layer.close(frameIndex);
+				// 回调给父页面，是否刷新
+				layui.data('layui_add_form', {
+					key : 'isRefresh',
+					value : '1'
+				});
+			});
+		});
+	};
+	
 	/**
 	 * 获取路径 getUrl(['controller','action'])
 	 * getUrl(['controller','action'])+'?'+$.param($.extend(op1,op2));
-	 * 
-	 * @param {[type]}
-	 *            arr [description] *
-	 * @return {[type]} [description]
 	 */
 	util.getUrl = function (arr, start, end) { // js
 	    var ar = location.pathname.split('/');
@@ -207,7 +165,7 @@ layui.use('layer', function() {
 	        end: function () {
 	        	var layui_add_form = layui.data('layui_add_form');
 	        	if(layui_add_form.isRefresh){
-	        		layui.data('layui_add_form', null); //删除layui_add_form表
+	        		layui.data('layui_add_form', null); // 删除layui_add_form表
 	        		location.reload();
 	        	}             
             }

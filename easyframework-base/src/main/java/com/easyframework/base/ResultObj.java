@@ -43,13 +43,13 @@ public class ResultObj {
 
 	public ResultObj ajaxOk() {
 		this.setSuccess(true);
-		this.setMsg("ok");
+		this.setMsg("操作成功");
 		return this;
 	}
 
 	public ResultObj ajaxError() {
 		this.setSuccess(false);
-		this.setMsg("error");
+		this.setMsg("操作失败");
 		return this;
 	}
 

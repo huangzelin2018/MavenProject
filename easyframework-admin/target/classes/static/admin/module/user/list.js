@@ -52,13 +52,19 @@ layui.use('table', function() {
 	// 监听工具条
 	table.on('tool(listBox)', function(obj) {
 		var data = obj.data;
+		var tr = obj.tr;
 		if (obj.event === 'del') {
 			top.layer.confirm('真的删除行么', function(index) {
 				obj.del();
 				top.layer.close(index);
 			});
 		} else if (obj.event === 'edit') {
-			top.layer.alert('编辑行：<br>' + JSON.stringify(data))
+//			top.layer.alert('编辑行：<br>' + JSON.stringify(data));
+//			
+			var editObj=$(tr).find("[lay-event='edit']");
+			$(editObj).attr("_href",$(editObj).attr("_href")+"?id="+data.id);
+//			alert(JSON.stringify($(tr).find("[lay-event='edit']").html()));
+			util.boxshow(editObj);
 		}
 	});
 

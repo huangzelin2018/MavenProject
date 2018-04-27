@@ -1,28 +1,47 @@
 <html layout:decorator="/admin/public/layout"
 	xmlns:th="http://www.thymeleaf.org">
 <meta charset="utf-8">
-<div layout:fragment="searchBox">
-	ID：
-	<div class="layui-inline">
-		<input class="layui-input" name="id" id="userId" autocomplete="off">
-	</div>
-	用户名：
-	<div class="layui-inline">
-		<input class="layui-input" name="usernamne" id="userName" autocomplete="off">
-	</div>
-	<button class="layui-btn" id="btnSearch" data-type="reload">搜索</button>
-</div>
 <div layout:fragment="content">
-	<script type="text/html" id="switchTpl">
-  		<input type="checkbox" name="sex" value="{{d.sex}}" lay-skin="switch" lay-text="女|男" lay-filter="sexDemo" {{ d.sex == 2 ? 'checked' : '' }}>
-	</script>
-	<script type="text/html" id="toolbar">
-  		<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
-  		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-  		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-	</script>
-	<table class="layui-hide radius" id="listBox" lay-filter="listBox"></table>
+	<form class="layui-form layui-form-pane" action="/admin/user/edit" >
+		<input type="hidden" name="id" value="${model.id}"/>
+		<div class="layui-form-item">
+			<label class="layui-form-label">用户名</label>
+			<div class="layui-input-block">
+				<input type="text" name="username" value="${model.username}" lay-verify="required"
+					autocomplete="off" placeholder="请输入用户名" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">昵称</label>
+			<div class="layui-input-block">
+				<input type="text" name="nickName" value="${model.nickName}" lay-verify="required"
+					autocomplete="off" placeholder="请输入昵称" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">密码</label>
+			<div class="layui-input-inline">
+				<input type="password" name="password" placeholder="请输入密码"
+					autocomplete="off" class="layui-input">
+			</div>
+			<div class="layui-form-mid layui-word-aux">请务必填写</div>
+		</div>
+
+		<div class="layui-form-item" pane="">
+			<label class="layui-form-label">性别</label>
+			<div class="layui-input-block">
+				<input type="radio" name="sex" value="1" title="男" checked="">
+				<input type="radio" name="sex" value="2" title="女"> 
+			</div>
+		</div>
+		 
+		<div class="layui-form-item hide" >
+			<div class="layui-input-block">
+				<button class="layui-btn" id="btnSubmit" lay-submit="" lay-filter="submitForm">立即提交</button>
+			</div>
+		</div>
+	</form>
 </div>
 <div layout:fragment="footer">
-	<script src="/admin/module/user/list.js"></script>
+	<script src="/admin/module/user/edit.js"></script>
 </div>

@@ -5,6 +5,8 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,19 +30,23 @@ public class UserController extends AdminController {
 	@RequestMapping("/list")
 	@ResponseBody
 	public Map<String, Object> list(@RequestParam Map<String, Object> paramsMap) {
+		
+		User user = userService.findById(1);
+		System.out.println(user);
 		return userService.getListByMap(paramsMap);
 	}
 
-	@RequestMapping("/add")
+	@GetMapping("/add")
 	public String add() {
 		return view("add");
 	}
 
-	@RequestMapping("/save")
+	@PostMapping("/add")
 	@ResponseBody
 	public ResultObj save(User user) {
 		try {
-			userService.save(user);
+			System.out.println(user);
+//			userService.save(user);
 			return resultObj.ajaxOk();
 		} catch (Exception e) {
 			return resultObj.ajaxError();
@@ -48,14 +54,14 @@ public class UserController extends AdminController {
 
 	}
 
-	@RequestMapping("/edit")
+	@GetMapping("/edit")
 	public String edit(Integer id) {
 		User user = userService.findById(id);
-		request.setAttribute("user", user);
+		request.setAttribute("model", user);
 		return view("edit");
 	}
 
-	@RequestMapping("/update")
+	@PostMapping("/edit")
 	@ResponseBody
 	public ResultObj update(User user) {
 		try {
