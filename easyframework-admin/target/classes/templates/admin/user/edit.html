@@ -2,26 +2,26 @@
 	xmlns:th="http://www.thymeleaf.org">
 <meta charset="utf-8">
 <div layout:fragment="content">
-	<form class="layui-form layui-form-pane" action="/admin/user/edit" >
-		<input type="hidden" name="id" value="${model.id}"/>
+	<form class="layui-form layui-form-pane" th:object="${model}" action="/admin/user/edit" >
+		<input type="hidden" name="id" th:field="*{id}"/>
 		<div class="layui-form-item">
 			<label class="layui-form-label">用户名</label>
 			<div class="layui-input-block">
-				<input type="text" name="username" value="${model.username}" lay-verify="required"
+				<input type="text" name="username" th:field="*{username}" lay-verify="required"
 					autocomplete="off" placeholder="请输入用户名" class="layui-input">
 			</div>
 		</div>
 		<div class="layui-form-item">
 			<label class="layui-form-label">昵称</label>
 			<div class="layui-input-block">
-				<input type="text" name="nickName" value="${model.nickName}" lay-verify="required"
+				<input type="text" name="nickName" th:field="*{nickName}" lay-verify="required"
 					autocomplete="off" placeholder="请输入昵称" class="layui-input">
 			</div>
 		</div>
 		<div class="layui-form-item">
 			<label class="layui-form-label">密码</label>
 			<div class="layui-input-inline">
-				<input type="password" name="password" placeholder="请输入密码"
+				<input type="password" name="password" th:field="*{password}" placeholder="请输入密码"
 					autocomplete="off" class="layui-input">
 			</div>
 			<div class="layui-form-mid layui-word-aux">请务必填写</div>
@@ -30,8 +30,8 @@
 		<div class="layui-form-item" pane="">
 			<label class="layui-form-label">性别</label>
 			<div class="layui-input-block">
-				<input type="radio" name="sex" value="1" title="男" checked="">
-				<input type="radio" name="sex" value="2" title="女"> 
+				<input type="radio" name="sex" value="1" title="男" th:checked="*{sex eq 1 }" >
+				<input type="radio" name="sex" value="2" title="女" th:checked="*{sex eq 2 }" > 
 			</div>
 		</div>
 		 
@@ -41,7 +41,4 @@
 			</div>
 		</div>
 	</form>
-</div>
-<div layout:fragment="footer">
-	<script src="/admin/module/user/edit.js"></script>
 </div>

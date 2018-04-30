@@ -2,8 +2,8 @@ package com.easyframework.admin.controller;
 
 import java.util.Map;
 
-import javax.annotation.Resource;
-
+import org.easyframework.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.easyframework.admin.service.UserService;
 import com.easyframework.base.ResultObj;
 import com.easyframework.model.User;
 
@@ -19,9 +18,8 @@ import com.easyframework.model.User;
 @RequestMapping("/admin/user")
 public class UserController extends AdminController {
 
-	@Resource
+	@Autowired
 	private UserService userService;
-	
 
 	@RequestMapping("/")
 	public String toList() {
@@ -43,8 +41,7 @@ public class UserController extends AdminController {
 	@ResponseBody
 	public ResultObj save(User user) {
 		try {
-			System.out.println(user);
-//			userService.save(user);
+			userService.save(user);
 			return resultObj.ajaxOk();
 		} catch (Exception e) {
 			return resultObj.ajaxError();
@@ -55,7 +52,7 @@ public class UserController extends AdminController {
 	@GetMapping("/edit")
 	public String edit(Integer id) {
 		User user = userService.findById(id);
-		request.setAttribute("model", user);
+		model.addAttribute("model", user);
 		return view("edit");
 	}
 

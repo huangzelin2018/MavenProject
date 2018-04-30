@@ -12,6 +12,8 @@
 		<module>easyframework-base</module>
 		<module>easyframework-mybatis</module>
 		<module>easyframework-admin</module>
+		<module>easyframework-shiro</module>
+		<module>easyframework-service</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>

@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 /**
@@ -19,14 +20,16 @@ public abstract class BaseController{
 	protected HttpServletRequest request;  
     protected HttpServletResponse response;  
     protected HttpSession session;  
+    protected Model model;  
     
     /**
      * 获取request/response/session
      */
     @ModelAttribute  
-    public void setReqAndRes(HttpServletRequest request, HttpServletResponse response){  
+    public void setReqAndRes(Model model,HttpServletRequest request, HttpServletResponse response){  
         this.request = request;  
         this.response = response;  
+        this.model=model;
         this.session = request.getSession(true);  //false:如果有回话就返回回话，否则返回null
     }  
 	

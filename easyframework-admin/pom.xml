@@ -17,15 +17,9 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.framework</groupId>
-			<artifactId>easyframework-base</artifactId>
+			<artifactId>easyframework-service</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>com.framework</groupId>
-			<artifactId>easyframework-mybatis</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		
 	</dependencies>
 
 </project>

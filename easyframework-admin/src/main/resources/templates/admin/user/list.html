@@ -52,8 +52,8 @@
   		<input type="checkbox" name="sex" value="{{d.sex}}" lay-skin="switch" lay-text="女|男" lay-filter="sexDemo" {{ d.sex == 2 ? 'checked' : '' }}>
 	</script>
 	<script type="text/html" id="toolbar">
-  		<a class="layui-btn layui-btn-xs" _height="450" _width="800" _title="添加用户" _href="/admin/user/edit" lay-event="edit">编辑</a>
-  		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+  		<a class="layui-btn layui-btn-xs" _height="450" _width="800" _title="编辑用户" url="/admin/user/edit" lay-event="edit">编辑</a>
+  		<a class="layui-btn layui-btn-danger layui-btn-xs" _title="您确定删除？" lay-event="del" url="/admin/user/delete">删除</a>
 	</script>
 	<table class="layui-hide radius" id="listBox" lay-filter="listBox"></table>
 </div>

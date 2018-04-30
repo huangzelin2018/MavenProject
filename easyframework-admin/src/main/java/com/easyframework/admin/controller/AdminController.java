@@ -6,8 +6,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.web.bind.annotation.ModelAttribute;
-
 import com.easyframework.base.BaseController;
 import com.easyframework.base.util.ArrayUtils;
 
@@ -19,11 +17,6 @@ public class AdminController extends BaseController{
 	protected Map<String, Object> m = new HashMap<String, Object>();// 用来设置给前台显示map
 	private static String[] excludeSearchArr = new String[] { "page", "pageSize", "dir", "sort" };// 搜索排除值
 
-	@ModelAttribute
-	public void init(HttpServletRequest request) {
-		String className = getClassModelName();
-		request.setAttribute("path", BUSINESS_NAME + SP + className);
-	}
 	
 	/**
 	 * 获取业务名称

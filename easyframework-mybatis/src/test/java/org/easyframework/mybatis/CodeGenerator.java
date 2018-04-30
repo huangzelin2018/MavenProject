@@ -33,28 +33,23 @@ public class CodeGenerator {
 
 	private static final String MODULE_NAME = "admin";
 
-	public static final String BASE_PACKAGE = "com.project";// 项目基础包名称，根据自己公司的项目修改
+	public static final String BASE_PACKAGE = "com.easyframework";// 项目基础包名称，根据自己公司的项目修改
 	public static final String MAPPER_INTERFACE_REFERENCE = BASE_PACKAGE + ".core.Mapper";// Mapper插件基础接口的完全限定名
 
 	public static final String MODEL_PACKAGE = BASE_PACKAGE + ".model";// Model所在包
-	public static final String MAPPER_PACKAGE = BASE_PACKAGE + ".dao";// Mapper所在包
+	public static final String MAPPER_PACKAGE = BASE_PACKAGE + ".mapper";// Mapper所在包
 	public static final String SERVICE_PACKAGE = BASE_PACKAGE + "." + MODULE_NAME + ".service";// Service所在包
 	public static final String CONTROLLER_PACKAGE = BASE_PACKAGE + "." + MODULE_NAME + ".controller";// Controller所在包
 
 	// JDBC配置，请修改为你项目的实际配置
-	private static final String JDBC_URL = "jdbc:mysql://localhost:3306/test";
+	private static final String JDBC_URL = "jdbc:mysql://localhost:3306/db_easyframework";
 	private static final String JDBC_USERNAME = "root";
 	private static final String JDBC_PASSWORD = "huangzelin";
 	private static final String JDBC_DIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
 
 	private static final String PROJECT_PATH = System.getProperty("user.dir");// 项目在硬盘上的基础路径
-	private static final String TEMPLATE_FILE_PATH = PROJECT_PATH + "/src/test/resources/generator/template";// 模板位置
-
-	private static final String JAVA_PATH = "/src/main/java"; // java文件路径
-	private static final String RESOURCES_PATH = "/src/main/resources";// 资源文件路径
-
-	private static final String PACKAGE_PATH_SERVICE = packageConvertPath(SERVICE_PACKAGE);// 生成的Service存放路径
-	private static final String PACKAGE_PATH_CONTROLLER = packageConvertPath(CONTROLLER_PACKAGE);// 生成的Controller存放路径
+	private static final String TEMPLATE_FILE_PATH = PROJECT_PATH + "/src/test/resources/generator/template/"
+			+ MODULE_NAME;// 模板位置
 
 	private static final String AUTHOR = "huangzl";// @author
 	private static final String DATE = new SimpleDateFormat("yyyy/MM/dd").format(new Date());// @date
@@ -66,8 +61,8 @@ public class CodeGenerator {
 	public static void genCode(String... tableNames) {
 		for (String tableName : tableNames) {
 			// 根据需求生成，不需要的注掉，模板有问题的话可以自己修改。
-			genModelAndMapper(tableName);
-			genService(tableName);
+			 genModelAndMapper(tableName);
+			 genService(tableName);
 			genController(tableName);
 		}
 	}
@@ -92,17 +87,17 @@ public class CodeGenerator {
 		context.addPluginConfiguration(pluginConfiguration);
 
 		JavaModelGeneratorConfiguration javaModelGeneratorConfiguration = new JavaModelGeneratorConfiguration();
-		javaModelGeneratorConfiguration.setTargetProject(PROJECT_PATH + JAVA_PATH);
+		javaModelGeneratorConfiguration.setTargetProject(TEMPLATE_FILE_PATH + "/file");
 		javaModelGeneratorConfiguration.setTargetPackage(MODEL_PACKAGE);
 		context.setJavaModelGeneratorConfiguration(javaModelGeneratorConfiguration);
 
 		SqlMapGeneratorConfiguration sqlMapGeneratorConfiguration = new SqlMapGeneratorConfiguration();
-		sqlMapGeneratorConfiguration.setTargetProject(PROJECT_PATH + RESOURCES_PATH);
+		sqlMapGeneratorConfiguration.setTargetProject(TEMPLATE_FILE_PATH + "/file");
 		sqlMapGeneratorConfiguration.setTargetPackage("mapper");
 		context.setSqlMapGeneratorConfiguration(sqlMapGeneratorConfiguration);
 
 		JavaClientGeneratorConfiguration javaClientGeneratorConfiguration = new JavaClientGeneratorConfiguration();
-		javaClientGeneratorConfiguration.setTargetProject(PROJECT_PATH + JAVA_PATH);
+		javaClientGeneratorConfiguration.setTargetProject(TEMPLATE_FILE_PATH + "/file");
 		javaClientGeneratorConfiguration.setTargetPackage(MAPPER_PACKAGE);
 		javaClientGeneratorConfiguration.setConfigurationType("XMLMAPPER");
 		context.setJavaClientGeneratorConfiguration(javaClientGeneratorConfiguration);
@@ -148,10 +143,9 @@ public class CodeGenerator {
 			String modelNameUpperCamel = tableNameConvertUpperCamel(tableName);
 			data.put("modelNameUpperCamel", modelNameUpperCamel);
 			data.put("modelNameLowerCamel", tableNameConvertLowerCamel(tableName));
-			data.put("basePackage", BASE_PACKAGE);
+			data.put("basePackage", BASE_PACKAGE + "." + MODULE_NAME);
 
-			File file = new File(
-					PROJECT_PATH + JAVA_PATH + PACKAGE_PATH_SERVICE + modelNameUpperCamel + "Service.java");
+			File file = new File(TEMPLATE_FILE_PATH + "/file/" + modelNameUpperCamel + "Service.java");
 			if (!file.getParentFile().exists()) {
 				file.getParentFile().mkdirs();
 			}
@@ -173,15 +167,12 @@ public class CodeGenerator {
 			String modelNameUpperCamel = tableNameConvertUpperCamel(tableName);
 			data.put("modelNameUpperCamel", modelNameUpperCamel);
 			data.put("modelNameLowerCamel", tableNameConvertLowerCamel(tableName));
-			data.put("basePackage", BASE_PACKAGE);
+			data.put("basePackage", BASE_PACKAGE + "." + MODULE_NAME);
 
-			File file = new File(
-					PROJECT_PATH + JAVA_PATH + PACKAGE_PATH_CONTROLLER + modelNameUpperCamel + "Controller.java");
+			File file = new File(TEMPLATE_FILE_PATH + "/file/" + modelNameUpperCamel + "Controller.java");
 			if (!file.getParentFile().exists()) {
 				file.getParentFile().mkdirs();
 			}
-			// cfg.getTemplate("controller-restful.ftl").process(data, new
-			// FileWriter(file));
 			cfg.getTemplate(MODULE_NAME + "-controller.ftl").process(data, new FileWriter(file));
 
 			System.out.println(modelNameUpperCamel + "Controller.java 生成成功");

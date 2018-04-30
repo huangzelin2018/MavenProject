@@ -12,32 +12,10 @@ layui.use([ 'form','layer'], function() {
 			url : $(data.form).attr("action"),
 			data : data.field
 		};
-		alert(JSON.stringify(options));
 		util.addModel(options);
 		return false;
 	 });
 	
-	/**
-	 * 工具类
-	 * 
-	 * @type type
-	 */
-	util.delete = function (obj) {
-	    var options = {
-	        url: $(obj).attr('_href')
-	    };
-	    var title = $(obj).attr('_title') || '你确定删除？';
-	    layer.confirm(title, {
-	        btn: ['确定', '取消']
-	    }, function (index, layero) {
-	        layer.close(index);
-	        util.ajax(options, function (data) {
-	            $(obj).parents("tr").fadeOut();
-	            layer.msg('删除成功!');
-	            // window.location.reload();
-	        });
-	    });
-	};
 
 	/**
 	 * 确认
@@ -45,18 +23,23 @@ layui.use([ 'form','layer'], function() {
 	 * @param {Object}
 	 *            obj
 	 */
-	util.confirm = function (obj) {
+	util.confirm = function (obj,callback) {
 	    var options = {
 	        url: $(obj).attr('_href')
 	    };
 	    var title = $(obj).attr('_title') || '你确定？';
-	    layer.confirm(title, {
+	    top.layer.confirm(title, {
+	    	title:'温馨提示',
 	        btn: ['确定', '取消']
 	    }, function (index, layero) {
-	        layer.close(index);
+	        top.layer.close(index);
 	        util.ajax(options, function (data) {
-	            layer.msg('操作成功!');
-	            window.location.reload();
+	            top.layer.msg('操作成功!');
+	            if(callback){
+	            	callback(data);
+	            }else{
+	            	window.location.reload();
+	            }
 	        });
 	    });
 	};
@@ -200,81 +183,6 @@ layui.use([ 'form','layer'], function() {
 	    }
 	};
 
-	/**
-	 * 插入模板
-	 * 
-	 * @param {Object}
-	 *            ueditorId
-	 */
-	util.addTemplate = function (ueditorId) {
-	    var tmpl_id = $("#tmpl_id_" + ueditorId).val();
-	    if (tmpl_id == '') {
-	        layer.msg('请选择模板', {
-	            icon: 2,
-	            time: 1500
-	        });
-	        return false;
-	    }
-	    var options = {
-	        url: think.addTemplate + "?id=" + tmpl_id
-	    };
-	    util.ajax(options, function (data) {
-	        UE.getEditor(ueditorId).setContent(data.html, true);
-	    });
-	};
-
-	/**
-	 * ajax操作
-	 * 
-	 * @param options
-	 * @param layui
-	 * @param _callback
-	 * @returns {boolean}
-	 */
-	util.ajaxApp = function (options, _callback) {
-	    if (options.url == null || options.url == '') {
-	        $.notifyBar({cssClass: "warning", html: "是否忘记配置url数据源?"});
-	        return false;
-	    }
-	    var index = layer.load();
-	    var _options = {
-	        dataType: 'json',
-	        type: "post",
-	        timeout: 10000, // 超时时间：10秒
-	        url: '',
-	        cache: false,
-	        data: {},
-	        success: function (data) {
-	            if (data.code == 0) {
-	                $.notifyBar({cssClass: "error", html: data.msg});
-	                return false;
-	            }
-	            _callback(data);
-	        },
-	        error: function (XMLHttpRequest, textStatus, errorThrown) {
-	            $.notifyBar({cssClass: "error", html: '可能网络异常,操作失败!'});
-	        },
-	        complete: function () {
-	            layer.close(index);
-	        }
-	    };
-	    $.ajax($.extend(_options, options));
-	};
-
-	/**
-	 * 填充表单
-	 * 
-	 * @param {type}
-	 *            formId
-	 * @param {type}
-	 *            options
-	 * @returns {undefined}
-	 */
-	util.setForm = function (formId, options) {
-	    util.ajaxApp(options, function (data) {
-	        $("#" + formId).setForm(data);// 返回json数据
-	    });
-	};
 
 	$.fn.setForm = function (jsonValue) {
 	    var obj = this;

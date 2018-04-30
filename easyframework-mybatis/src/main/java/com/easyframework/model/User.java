@@ -1,6 +1,8 @@
 package com.easyframework.model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -9,31 +11,32 @@ import javax.persistence.Id;
 
 import com.easyframework.base.BaseModel;
 
-public class User extends BaseModel{
-	
+public class User extends BaseModel {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer uid;
+	@Column(unique = true)
+	private String username;
 
-    private String username;
+	private String password;
 
-    private String password;
+	@Column(name = "nickName")
+	private String nickName;
 
-    @Column(name = "nickName")
-    private String nickName;
+	private Integer sex;
 
-    private Integer sex;
+	@Column(name = "registerDate")
+	private Date registerDate;
 
-    @Column(name = "registerDate")
-    private Date registerDate;
+	private Set<Role> roles = new HashSet<Role>();
 
-	public Integer getId() {
-		return id;
+	public Integer getUid() {
+		return uid;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setUid(Integer uid) {
+		this.uid = uid;
 	}
 
 	public String getUsername() {
@@ -76,5 +79,12 @@ public class User extends BaseModel{
 		this.registerDate = registerDate;
 	}
 
-    
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+
 }

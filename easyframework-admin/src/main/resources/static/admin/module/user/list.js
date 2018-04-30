@@ -15,7 +15,7 @@ layui.use('table', function() {
 			type : 'checkbox',
 			fixed : 'left',
 		}, {
-			field : 'id',
+			field : 'uid',
 			width : 80,
 			title : 'ID',
 			sort : true
@@ -54,16 +54,14 @@ layui.use('table', function() {
 		var data = obj.data;
 		var tr = obj.tr;
 		if (obj.event === 'del') {
-			top.layer.confirm('真的删除行么', function(index) {
+			var delObj=$(tr).find("[lay-event='del']");
+			$(delObj).attr("_href",$(delObj).attr("url")+"?uid="+data.uid);
+			util.confirm(delObj,function(){
 				obj.del();
-				top.layer.close(index);
 			});
 		} else if (obj.event === 'edit') {
-//			top.layer.alert('编辑行：<br>' + JSON.stringify(data));
-//			
 			var editObj=$(tr).find("[lay-event='edit']");
-			$(editObj).attr("_href",$(editObj).attr("_href")+"?id="+data.id);
-//			alert(JSON.stringify($(tr).find("[lay-event='edit']").html()));
+			$(editObj).attr("_href",$(editObj).attr("url")+"?uid="+data.uid);
 			util.boxshow(editObj);
 		}
 	});
