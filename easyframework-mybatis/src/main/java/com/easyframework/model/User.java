@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import com.easyframework.base.BaseModel;
 
@@ -29,6 +30,7 @@ public class User extends BaseModel {
 	@Column(name = "registerDate")
 	private Date registerDate;
 
+	@Transient
 	private Set<Role> roles = new HashSet<Role>();
 
 	public Integer getUid() {

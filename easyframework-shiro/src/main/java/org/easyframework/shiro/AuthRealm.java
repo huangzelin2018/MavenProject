@@ -13,12 +13,12 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.easyframework.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.easyframework.model.Module;
 import com.easyframework.model.Role;
 import com.easyframework.model.User;
+import com.easyframework.service.UserService;
 
 public class AuthRealm extends AuthorizingRealm {
 	

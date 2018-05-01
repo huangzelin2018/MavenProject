@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import com.easyframework.base.BaseModel;
 
@@ -14,7 +15,9 @@ public class Role extends BaseModel{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer rid;
 	private String rname;
+	@Transient
 	private Set<User> users = new HashSet<User>();	
+	@Transient
 	private Set<Module> modules = new HashSet<Module>();
 	public Integer getRid() {
 		return rid;
