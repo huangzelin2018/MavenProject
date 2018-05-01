@@ -1,4 +1,4 @@
-package org.easyframework.shiro;
+package com.easyframework.shiro;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

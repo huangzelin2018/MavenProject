@@ -1,4 +1,4 @@
-package org.easyframework.shiro;
+package com.easyframework.shiro;
 
 import java.util.ArrayList;
 import java.util.List;

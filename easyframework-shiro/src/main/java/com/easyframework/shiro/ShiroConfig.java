@@ -1,4 +1,4 @@
-package org.easyframework.shiro;
+package com.easyframework.shiro;
 
 import java.util.LinkedHashMap;
 
@@ -18,6 +18,7 @@ public class ShiroConfig {
 
 	@Bean
 	public ShiroFilterFactoryBean shiroFilter(org.apache.shiro.mgt.SecurityManager manager) {
+		System.err.println("ShiroConfiguration.shiroFilter()");
 		ShiroFilterFactoryBean bean = new ShiroFilterFactoryBean();
 		bean.setSecurityManager(manager);
 		// 配置登录的url和登录成功的url

@@ -1,4 +1,4 @@
-package org.easyframework.shiro;
+package com.easyframework.shiro;
 
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;

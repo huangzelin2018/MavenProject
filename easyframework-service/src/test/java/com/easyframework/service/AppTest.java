@@ -1,4 +1,4 @@
-package org.easyframework.service;
+package com.easyframework.service;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
