@@ -20,6 +20,9 @@ import com.easyframework.model.Role;
 import com.easyframework.model.User;
 import com.easyframework.service.UserService;
 
+/**
+ * 认证/授权
+ */
 public class AuthRealm extends AuthorizingRealm {
 	
 	@Autowired

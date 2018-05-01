@@ -1,17 +1,19 @@
 package com.easyframework.shiro;
 
 import java.util.LinkedHashMap;
+import java.util.Map;
+
+import javax.servlet.Filter;
 
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.easyframework.vrifycode.VrifyCodeAuthenticationFilter;
+
 /**
- * shiro的配置类
- * 
- * @author Administrator
- *
+ * shiro配置类
  */
 @Configuration
 public class ShiroConfig {
@@ -21,16 +23,20 @@ public class ShiroConfig {
 		System.err.println("ShiroConfiguration.shiroFilter()");
 		ShiroFilterFactoryBean bean = new ShiroFilterFactoryBean();
 		bean.setSecurityManager(manager);
+		
+		Map<String, Filter> filters = bean.getFilters();//获取filters
+		filters.put("authc", new VrifyCodeAuthenticationFilter());//将自定义 的FormAuthenticationFilter注入shiroFilter中  
+		
 		// 配置登录的url和登录成功的url
 		bean.setLoginUrl("/login");
 		bean.setSuccessUrl("/home");
+		bean.setUnauthorizedUrl("/public/403");
 		// 配置访问权限
 		LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
-		filterChainDefinitionMap.put("/jsp/login.jsp*", "anon"); // 表示可以匿名访问
 		filterChainDefinitionMap.put("/loginUser", "anon");
 		filterChainDefinitionMap.put("/logout*", "anon");
-		filterChainDefinitionMap.put("/jsp/error.jsp*", "anon");
-		filterChainDefinitionMap.put("/jsp/index.jsp*", "authc");
+		filterChainDefinitionMap.put("/public/*", "anon");
+		filterChainDefinitionMap.put("/admin/*", "authc");
 		filterChainDefinitionMap.put("/*", "authc");// 表示需要认证才可以访问
 		filterChainDefinitionMap.put("/**", "authc");// 表示需要认证才可以访问
 		filterChainDefinitionMap.put("/*.*", "authc");
