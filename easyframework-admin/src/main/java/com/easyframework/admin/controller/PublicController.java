@@ -19,7 +19,7 @@ import com.google.code.kaptcha.impl.DefaultKaptcha;
  */
 @Controller
 @RequestMapping("/public/")
-public class PublicController {
+public class PublicController extends AdminController{
 
 	@Autowired
 	DefaultKaptcha defaultKaptcha;
@@ -27,7 +27,7 @@ public class PublicController {
 	@RequestMapping("/403")
 	public String unauthorizedRole() {
 		System.out.println("------没有权限-------");
-		return "403";
+		return "/public/403";
 	}
 
 	@RequestMapping("/kaptcha")

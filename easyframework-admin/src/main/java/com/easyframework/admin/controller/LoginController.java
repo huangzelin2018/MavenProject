@@ -44,4 +44,9 @@ public class LoginController {
 		return "/login";
 	}
 	
+	@RequestMapping("/home")
+	public String home() {
+		return "redirect:admin/main/index";
+	}
+	
 }

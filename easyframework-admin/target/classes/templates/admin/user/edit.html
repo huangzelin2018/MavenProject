@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <div layout:fragment="content">
 	<form class="layui-form layui-form-pane" th:object="${model}" action="/admin/user/edit" >
-		<input type="hidden" name="id" th:field="*{id}"/>
+		<input type="hidden" name="uid" th:field="*{uid}"/>
 		<div class="layui-form-item">
 			<label class="layui-form-label">用户名</label>
 			<div class="layui-input-block">

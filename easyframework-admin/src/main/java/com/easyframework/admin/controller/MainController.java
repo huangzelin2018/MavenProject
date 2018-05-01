@@ -9,9 +9,6 @@ public class MainController extends AdminController {
 
 	@RequestMapping("/index")
 	public String index() {
-		
-		
-		
 		return view("index");
 	}
 }

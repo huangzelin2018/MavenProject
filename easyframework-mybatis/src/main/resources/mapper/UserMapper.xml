@@ -48,7 +48,7 @@
 		</if>
 	</select> 
 	
-	<select id="findByUserName" parameterType="string" resultMap="BaseResultMap">
+	<select id="findUserByUserName" parameterType="string" resultMap="BaseResultMap">
         SELECT u.*,r.*,m.* FROM user u inner join user_role ur on ur.uid=u.uid 
         inner join role r on r.rid=ur.rid
         inner join module_role mr on mr.rid=r.rid 

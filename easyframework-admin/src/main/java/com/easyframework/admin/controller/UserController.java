@@ -2,6 +2,7 @@ package com.easyframework.admin.controller;
 
 import java.util.Map;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,11 +34,13 @@ public class UserController extends AdminController {
 	}
 
 	@GetMapping("/add")
+	@RequiresPermissions("user:add")
 	public String add() {
 		return view("add");
 	}
 
 	@PostMapping("/add")
+	@RequiresPermissions("user:add")
 	@ResponseBody
 	public ResultObj save(User user) {
 		try {
@@ -50,8 +53,9 @@ public class UserController extends AdminController {
 	}
 
 	@GetMapping("/edit")
-	public String edit(Integer id) {
-		User user = userService.findById(id);
+	public String edit(Integer uid) {
+		User user = userService.findById(uid);
+		System.out.println(user);
 		model.addAttribute("model", user);
 		return view("edit");
 	}
@@ -69,9 +73,9 @@ public class UserController extends AdminController {
 
 	@RequestMapping("/delete")
 	@ResponseBody
-	public ResultObj delete(Integer id) {
+	public ResultObj delete(Integer uid) {
 		try {
-			userService.deleteById(id);
+			userService.deleteById(uid);
 			return resultObj.ajaxOk();
 		} catch (Exception e) {
 			return resultObj.ajaxError();

@@ -1,5 +1,5 @@
 <html layout:decorator="/admin/public/layout"
-	xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <meta charset="utf-8">
 <div layout:fragment="searchBox">
 	<!-- 搜索框 -->
@@ -39,7 +39,7 @@
 					class="layui-btn search-btn">
 					<i class="layui-icon"></i>搜索
 				</button>
-				<button id="addBtn" _height="450" _width="800" _title="添加用户" _href="/admin/user/add"
+				<button shiro:hasPermission="user:add" id="addBtn" _height="450" _width="800" _title="添加用户" _href="/admin/user/add"
 					onclick="util.boxshow(this);" class="layui-btn search-btn">
 					<i class="layui-icon"></i>添加
 				</button>
