@@ -28,8 +28,7 @@ public class LoginController {
 	public String login(HttpServletRequest request, Map<String, Object> map) throws Exception {
 
 		Subject currentUser = SecurityUtils.getSubject();
-		User user = (User) currentUser.getPrincipal();
-		if (user != null) {
+		if (currentUser.isAuthenticated()) {
 			return this.home();
 		}
 
