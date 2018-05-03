@@ -42,8 +42,8 @@ public class ShiroConfig {
 		bean.setUnauthorizedUrl("/public/403");
 		// 配置访问权限
 		LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
-		filterChainDefinitionMap.put("/loginUser", "anon");
-		filterChainDefinitionMap.put("/logout*", "anon");
+		filterChainDefinitionMap.put("/favicon.ico", "anon");
+		filterChainDefinitionMap.put("/logOut", "anon");
 		filterChainDefinitionMap.put("/public/*", "anon");
 		filterChainDefinitionMap.put("/admin/*", "authc");
 		filterChainDefinitionMap.put("/*", "authc");// 表示需要认证才可以访问

@@ -13,6 +13,8 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.easyframework.model.Module;
@@ -25,6 +27,8 @@ import com.easyframework.service.UserService;
  */
 public class AuthRealm extends AuthorizingRealm {
 
+	private final static Logger logger = LoggerFactory.getLogger(AuthRealm.class);
+
 	@Autowired
 	private UserService userService;
 
@@ -34,6 +38,9 @@ public class AuthRealm extends AuthorizingRealm {
 		UsernamePasswordToken utoken = (UsernamePasswordToken) token;// 获取用户输入的token
 		String username = utoken.getUsername();
 		User user = userService.findUserByUserName(username);
+		if (user == null) {
+			return null;
+		}
 		return new SimpleAuthenticationInfo(user, user.getPassword(), this.getClass().getName());// 放入shiro.调用CredentialsMatcher检验密码
 	}
 
@@ -43,8 +50,10 @@ public class AuthRealm extends AuthorizingRealm {
 		User user = (User) principal.fromRealm(this.getClass().getName()).iterator().next();// 获取session中的用户
 		List<String> permissions = new ArrayList<>();
 		Set<Role> roles = user.getRoles();
+		List<String> roleList = new ArrayList<String>();
 		if (roles.size() > 0) {
 			for (Role role : roles) {
+				roleList.add(role.getRname());
 				Set<Module> modules = role.getModules();
 				if (modules.size() > 0) {
 					for (Module module : modules) {
@@ -55,6 +64,11 @@ public class AuthRealm extends AuthorizingRealm {
 		}
 		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 		info.addStringPermissions(permissions);// 将权限放入shiro中.
+		info.addRoles(roleList);
+
+		logger.info("用户" + user.getUsername() + "具有的角色:" + info.getRoles());
+		logger.info("用户" + user.getUsername() + "具有的权限：" + info.getStringPermissions());
+
 		return info;
 	}
 

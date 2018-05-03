@@ -75,7 +75,7 @@
                 shadeClose:true,
                 content: '<img width=\'300\' src=\'/admin/win10-ui/img/presentation/donation.jpg\' />'
             })"><i class="green icon fa fa-thumbs-up fa-fw"></i>捐赠</div>
-            <div class="item" onclick="Win10.exit();"><i class="black icon fa fa-power-off fa-fw"></i>关闭</div>
+            <div class="item" onclick="util.exit();"><i class="black icon fa fa-power-off fa-fw"></i>关闭</div>
         </div>
         <div class="blocks">
             <div class="menu_group">
@@ -174,5 +174,21 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+	var util={
+		exit:function(){
+			Win10.menuClose();
+			top.layer.confirm("是否退出？", {
+		    	title:'温馨提示',
+		        btn: ['确定', '取消']
+		    }, function (index, layero) {
+		        top.layer.close(index);
+		        window.location.href="/logOut";
+		    },function(){
+		    	Win10.menuOpen();
+		    });
+		}	
+	};
+</script>
 </body>
 </html>
