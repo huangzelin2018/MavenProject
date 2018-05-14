@@ -1,0 +1,11 @@
+com\easyframework\base\util\CharsetEncoding.class
+com\easyframework\base\ServiceException.class
+com\easyframework\base\Service.class
+com\easyframework\base\Mapper.class
+com\easyframework\base\util\StringUtils.class
+com\easyframework\base\util\CollectionUtils.class
+com\easyframework\base\util\ArrayUtils.class
+com\easyframework\base\BaseController.class
+com\easyframework\base\ResultObj.class
+com\easyframework\base\BaseService.class
+com\easyframework\base\BaseModel.class
